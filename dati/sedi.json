@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "nome": "Officina Nord",
+    "indirizzo": "Via delle Officine 12, Torino"
+  },
+  {
+    "id": 2,
+    "nome": "Spazio Forma",
+    "indirizzo": "Corso della Forma 45, Torino"
+  },
+  {
+    "id": 3,
+    "nome": "Cortile Comune",
+    "indirizzo": "Piazzetta del Comune 3, Torino"
+  }
+]
