@@ -1,0 +1,8 @@
+# Materiale didattico e backup locali, non vanno nella repository del sito
+istruzioni/
+_backup/
+*.zip
+
+# File di sistema
+Thumbs.db
+.DS_Store

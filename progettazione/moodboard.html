@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moodboard — Segnale</title>
+  <link rel="preconnect" href="https://miaoda.feishu.cn">
+  <link rel="preconnect" href="https://sf3-scmcdn-cn.feishucdn.com" crossorigin>
+  <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;700&display=swap">
+  <style>
+    :root {
+      --primario: #245c49;
+      --primario-scuro: #173f32;
+      --arancio: #c65c36;
+      --giallo: #edca68;
+      --sfondo: #f5f2e9;
+      --carta: #ffffff;
+      --testo: #202923;
+      --testo-debole: #46564b;
+      --bordo: #b7c0b7;
+      --font-titoli: "Fraunces", Georgia, "Times New Roman", serif;
+      --font-testo: "Hanken Grotesk", Arial, Helvetica, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--sfondo);
+      color: var(--testo);
+      font-family: var(--font-testo);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .pagina {
+      width: 92%;
+      max-width: 68rem;
+      margin: 0 auto;
+      padding: 2.5rem 0 3rem;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-titoli);
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+    }
+
+    h2 {
+      font-size: 1.375rem;
+      margin-bottom: 1rem;
+    }
+
+    .eyebrow {
+      color: var(--testo-debole);
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin: 0 0 0.5rem;
+    }
+
+    /* Brief: cinque campi */
+    .brief {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin: 1.75rem 0 2.5rem;
+      padding: 1.5rem;
+      background: var(--carta);
+      border: 1px solid var(--bordo);
+      border-radius: 0.75rem;
+    }
+
+    .brief dt {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--primario);
+      margin-bottom: 0.35rem;
+    }
+
+    .brief dd {
+      margin: 0;
+      font-size: 0.9375rem;
+    }
+
+    /* Riferimenti della moodboard */
+    .riferimenti {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .riferimento {
+      background: var(--carta);
+      border: 1px solid var(--bordo);
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+
+    .riferimento .anteprima {
+      height: 11rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1.25rem;
+    }
+
+    .riferimento .corpo {
+      padding: 1.25rem;
+    }
+
+    .riferimento h3 {
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .riferimento p {
+      margin: 0;
+      font-size: 0.9375rem;
+    }
+
+    /* Campioni colore */
+    .campioni {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .campione {
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(32, 41, 35, 0.15);
+    }
+
+    .campione.verde { background: var(--primario); }
+    .campione.arancio { background: var(--arancio); }
+    .campione.giallo { background: var(--giallo); }
+    .campione.beige { background: var(--sfondo); }
+    .campione.scuro { background: var(--testo); }
+
+    /* Campione tipografico */
+    .tipo {
+      text-align: center;
+    }
+
+    .tipo .titolo-campione {
+      font-family: var(--font-titoli);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primario);
+    }
+
+    .tipo .testo-campione {
+      font-family: var(--font-testo);
+      font-size: 1rem;
+      color: var(--testo);
+    }
+
+    /* Griglia e distanze */
+    .griglia {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 22rem;
+    }
+
+    .riquadro {
+      height: 3.25rem;
+      border-radius: 0.5rem;
+    }
+
+    .riquadro.v { background: var(--primario); }
+    .riquadro.a { background: var(--arancio); }
+    .riquadro.g { background: var(--giallo); }
+
+    /* Contrasto manifesto */
+    .manifesto {
+      width: 100%;
+      max-width: 22rem;
+      background: var(--testo);
+      color: var(--sfondo);
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+    }
+
+    .manifesto .m-titolo {
+      font-family: var(--font-titoli);
+      font-size: 1.625rem;
+      font-weight: 700;
+    }
+
+    .manifesto .m-titolo em {
+      color: var(--giallo);
+      font-style: normal;
+    }
+
+    .manifesto .m-testo {
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Tre scelte dal riferimento al sito */
+    .scelte {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .scelta {
+      border-left: 4px solid var(--giallo);
+      padding: 0.25rem 0 0.25rem 1.25rem;
+    }
+
+    .scelta .etichetta {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--primario);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .scelta .da {
+      font-family: var(--font-titoli);
+      font-size: 1.125rem;
+    }
+
+    .scelta .freccia {
+      margin: 0.5rem 0;
+      color: var(--testo-debole);
+    }
+
+    .scelta .a {
+      font-weight: 700;
+    }
+
+    .scelta p {
+      margin: 0;
+      font-size: 0.9375rem;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--bordo);
+      color: var(--testo-debole);
+      font-size: 0.875rem;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      .pagina {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+      }
+      .riferimento, .brief, .scelta {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="pagina">
+    <header>
+      <p class="eyebrow">Esercitazione 7 · Identità visiva e navigazione</p>
+      <h1>Moodboard — Segnale, festival di design</h1>
+    </header>
+
+    <dl class="brief">
+      <div>
+        <dt>Titolo</dt>
+        <dd>Segnale — Festival di design</dd>
+      </div>
+      <div>
+        <dt>Destinatari</dt>
+        <dd>Pubblico curioso, designer, studenti e artigiani</dd>
+      </div>
+      <div>
+        <dt>Obiettivo</dt>
+        <dd>Presentare incontri, laboratori e mostre del festival e guidare al programma</dd>
+      </div>
+      <div>
+        <dt>Contenuti</dt>
+        <dd>Sei appuntamenti, tre luoghi, date e sedi del 12–13 giugno a Torino</dd>
+      </div>
+      <div>
+        <dt>Carattere</dt>
+        <dd>Caldo, geometrico e ordinato: leggibile, accogliente e con tratto deciso</dd>
+      </div>
+    </dl>
+
+    <section aria-labelledby="titolo-riferimenti">
+      <h2 id="titolo-riferimenti">Riferimenti raccolti</h2>
+      <div class="riferimenti">
+        <article class="riferimento">
+          <div class="anteprima">
+            <div class="campioni" aria-hidden="true">
+              <span class="campione verde"></span>
+              <span class="campione arancio"></span>
+              <span class="campione giallo"></span>
+              <span class="campione beige"></span>
+              <span class="campione scuro"></span>
+            </div>
+          </div>
+          <div class="corpo">
+            <h3>Palette materica</h3>
+            <p>Dal campione riprendo il verde profondo come colore principale, con arancio e giallo caldi come accenti su fondo beige chiaro: lo uso per link, pulsante e bordo dell'intestazione, mantenendo il testo scuro su fondo chiaro.</p>
+          </div>
+        </article>
+
+        <article class="riferimento">
+          <div class="anteprima tipo">
+            <div>
+              <div class="titolo-campione">Aa</div>
+              <div class="testo-campione">Segnale, incontri e laboratori</div>
+            </div>
+          </div>
+          <div class="corpo">
+            <h3>Dettaglio tipografico</h3>
+            <p>Il titolo con serif dal tratto morbido e le curve marcate dà carattere ai nomi del festival e degli appuntamenti; lo accosto a un sans neutro e leggibile per il testo, così titoli e corpo si distinguono senza sforzo.</p>
+          </div>
+        </article>
+
+        <article class="riferimento">
+          <div class="anteprima">
+            <div class="griglia" aria-hidden="true">
+              <span class="riquadro v"></span>
+              <span class="riquadro a"></span>
+              <span class="riquadro g"></span>
+              <span class="riquadro a"></span>
+              <span class="riquadro g"></span>
+              <span class="riquadro v"></span>
+            </div>
+          </div>
+          <div class="corpo">
+            <h3>Impaginazione a griglia</h3>
+            <p>Dalla griglia regolare di schede affiancate riprendo le distanze uniformi tra gli elementi: nel Programma uso CSS Grid con gap costante, in modo che le schede abbiano tutte lo stesso respiro anche cambiando numero di colonne.</p>
+          </div>
+        </article>
+
+        <article class="riferimento">
+          <div class="anteprima">
+            <div class="manifesto" aria-hidden="true">
+              <div class="m-titolo">Un segnale <em>chiaro</em></div>
+              <div class="m-testo">Titoli scuri su fondo chiaro, un solo accento per volta.</div>
+            </div>
+          </div>
+          <div class="corpo">
+            <h3>Contrasto da manifesto</h3>
+            <p>Dal manifesto riprendo il forte contrasto fra fondo chiaro e titoli scuri, con un accento colore isolato: lo applico alle sezioni e ai titoli, così le aree del sito si riconoscono subito anche sul telefono.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="titolo-scelte">
+      <h2 id="titolo-scelte">Tre scelte riconoscibili, dai riferimenti al sito</h2>
+      <div class="scelte">
+        <div class="scelta">
+          <p class="etichetta">Colore</p>
+          <p class="da">Palette materica e contrasto da manifesto</p>
+          <p class="freccia">↓</p>
+          <p><span class="a">Contrasto e palette:</span> verde #245c49 come colore principale, arancio e giallo come accenti, fondo beige e testo scuro per mantenere leggibilità.</p>
+        </div>
+        <div class="scelta">
+          <p class="etichetta">Carattere</p>
+          <p class="da">Dettaglio tipografico a confronto</p>
+          <p class="freccia">↓</p>
+          <p><span class="a">Scelta per i titoli:</span> Fraunces per titoli e marchio, Hanken Grotesk per il testo, con Georgia e Arial come famiglie di riserva.</p>
+        </div>
+        <div class="scelta">
+          <p class="etichetta">Spazi</p>
+          <p class="da">Impaginazione a griglia regolare</p>
+          <p class="freccia">↓</p>
+          <p><span class="a">Distanze fra elementi:</span> gap uniforme tra le schede, padding regolare nelle carte e respiro costante tra le sezioni, su una griglia che passa da una a tre colonne.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Segnale è un festival immaginario realizzato per esercitazione didattica. Riferimenti e campioni sono indicativi delle scelte progettuali, non siti da copiare.</p>
+    </footer>
+  </div>
+</body>
+</html>
