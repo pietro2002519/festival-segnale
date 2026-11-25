@@ -55,6 +55,7 @@ Una sede può ospitare zero o più eventi; ogni evento si svolge in una sola sed
 
 - 6 eventi.
 - 3 sedi.
+- Fino a 5 notizie ANSA Piemonte nell'Home (aggiornate dal feed nel foglio).
 
 ## 6. Chi aggiorna i dati e come
 
