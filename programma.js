@@ -5,8 +5,8 @@
 
 // Indirizzi CSV pubblicati dal foglio «Segnale — dati».
 // Sostituire con i link reali di File > Condividi > Pubblica sul web (formato CSV).
-const INDIRIZZO_EVENTI = "INSERISCI_INDIRIZZO_CSV_EVENTI";
-const INDIRIZZO_SEDI = "INSERISCI_INDIRIZZO_CSV_SEDI";
+const INDIRIZZO_EVENTI = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTffp6mOPqalhNTgyllNbF8r138hjADZeo11V9Sam_-Px3d_a9zOl7WmH27CKgOlTo14CV48sJ4Qqt5/pub?gid=1269403060&single=true&output=csv";
+const INDIRIZZO_SEDI = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTffp6mOPqalhNTgyllNbF8r138hjADZeo11V9Sam_-Px3d_a9zOl7WmH27CKgOlTo14CV48sJ4Qqt5/pub?gid=267037786&single=true&output=csv";
 
 const griglia = document.getElementById("griglia-eventi");
 

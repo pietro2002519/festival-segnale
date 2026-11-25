@@ -6,7 +6,7 @@ const lista = document.getElementById("notizie-lista");
 
 // Indirizzo CSV della scheda «notizie» pubblicata dal foglio.
 // Sostituire con il link reale di File > Condividi > Pubblica sul web (formato CSV).
-const INDIRIZZO_NOTIZIE = "INSERISCI_INDIRIZZO_CSV_NOTIZIE";
+const INDIRIZZO_NOTIZIE = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTffp6mOPqalhNTgyllNbF8r138hjADZeo11V9Sam_-Px3d_a9zOl7WmH27CKgOlTo14CV48sJ4Qqt5/pub?gid=2068658669&single=true&output=csv";
 
 const MAX_NOTIZIE = 5;
 
