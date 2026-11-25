@@ -39,7 +39,7 @@ I dati vivono in un foglio Google pubblicato sul web come tre elenchi CSV: `even
 | --- | --- | --- | --- |
 | `titolo` | testo | `"..."` | Titolo dell'articolo letto dal feed ANSA Piemonte. |
 | `link` | testo (URL) | `"https://..."` | Collegamento alla notizia originale. |
-| `data` | testo (data) | `"2026-11-25 10:30"` | Data di pubblicazione dal feed RSS. |
+| `data` | testo (data RSS RFC 2822) | `"Sun, 22 Nov 2026 22:30:28 +0100"` | Data di pubblicazione dal feed RSS; la pagina la formatta in italiano. |
 
 ## 3. Chiavi
 

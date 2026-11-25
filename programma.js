@@ -5,8 +5,8 @@
 
 // Indirizzi CSV pubblicati dal foglio «Segnale — dati».
 // Sostituire con i link reali di File > Condividi > Pubblica sul web (formato CSV).
-const INDIRIZZO_EVENTI = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTffp6mOPqalhNTgyllNbF8r138hjADZeo11V9Sam_-Px3d_a9zOl7WmH27CKgOlTo14CV48sJ4Qqt5/pub?gid=1269403060&single=true&output=csv";
-const INDIRIZZO_SEDI = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTffp6mOPqalhNTgyllNbF8r138hjADZeo11V9Sam_-Px3d_a9zOl7WmH27CKgOlTo14CV48sJ4Qqt5/pub?gid=267037786&single=true&output=csv";
+const INDIRIZZO_EVENTI = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ33Hzo90w5hy6rCOccTFdjAezpVbt1nQM8KMUwCHKhQ3B5RgKEfzSCN621snHN7Vxx-BAnyKb0qoHs/pub?gid=1483182339&single=true&output=csv";
+const INDIRIZZO_SEDI = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ33Hzo90w5hy6rCOccTFdjAezpVbt1nQM8KMUwCHKhQ3B5RgKEfzSCN621snHN7Vxx-BAnyKb0qoHs/pub?gid=839181857&single=true&output=csv";
 
 const griglia = document.getElementById("griglia-eventi");
 
@@ -70,22 +70,15 @@ function mostraMessaggio(testo, classe) {
 }
 
 // Legge un CSV pubblicato dal foglio e restituisce l'elenco di oggetti.
-function caricaCsv(indirizzo) {
-  return new Promise((resolve, reject) => {
-    Papa.parse(indirizzo, {
-      download: true,
-      header: true,
-      skipEmptyLines: true,
-      complete: (risultato) => {
-        if (risultato.errors && risultato.errors.length > 0 && risultato.data.length === 0) {
-          reject(new Error("CSV non leggibile"));
-          return;
-        }
-        resolve(risultato.data);
-      },
-      error: (errore) => reject(errore),
-    });
-  });
+async function caricaCsv(indirizzo) {
+  const risposta = await fetch(indirizzo);
+  if (!risposta.ok) throw new Error("CSV non disponibile");
+  const testo = await risposta.text();
+  const risultato = Papa.parse(testo, { header: true, skipEmptyLines: true });
+  if (risultato.errors && risultato.errors.length > 0 && risultato.data.length === 0) {
+    throw new Error("CSV non leggibile");
+  }
+  return risultato.data;
 }
 
 async function generaProgramma() {

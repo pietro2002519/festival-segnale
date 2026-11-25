@@ -6,7 +6,7 @@ const lista = document.getElementById("notizie-lista");
 
 // Indirizzo CSV della scheda «notizie» pubblicata dal foglio.
 // Sostituire con il link reale di File > Condividi > Pubblica sul web (formato CSV).
-const INDIRIZZO_NOTIZIE = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTffp6mOPqalhNTgyllNbF8r138hjADZeo11V9Sam_-Px3d_a9zOl7WmH27CKgOlTo14CV48sJ4Qqt5/pub?gid=2068658669&single=true&output=csv";
+const INDIRIZZO_NOTIZIE = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ33Hzo90w5hy6rCOccTFdjAezpVbt1nQM8KMUwCHKhQ3B5RgKEfzSCN621snHN7Vxx-BAnyKb0qoHs/pub?gid=357429608&single=true&output=csv";
 
 const MAX_NOTIZIE = 5;
 
@@ -30,22 +30,15 @@ function formattaData(dataTesto) {
   });
 }
 
-function caricaCsv(indirizzo) {
-  return new Promise((resolve, reject) => {
-    Papa.parse(indirizzo, {
-      download: true,
-      header: true,
-      skipEmptyLines: true,
-      complete: (risultato) => {
-        if (risultato.errors && risultato.errors.length > 0 && risultato.data.length === 0) {
-          reject(new Error("CSV non leggibile"));
-          return;
-        }
-        resolve(risultato.data);
-      },
-      error: (errore) => reject(errore),
-    });
-  });
+async function caricaCsv(indirizzo) {
+  const risposta = await fetch(indirizzo);
+  if (!risposta.ok) throw new Error("CSV non disponibile");
+  const testo = await risposta.text();
+  const risultato = Papa.parse(testo, { header: true, skipEmptyLines: true });
+  if (risultato.errors && risultato.errors.length > 0 && risultato.data.length === 0) {
+    throw new Error("CSV non leggibile");
+  }
+  return risultato.data;
 }
 
 function costruisciNotizia(notizia) {
