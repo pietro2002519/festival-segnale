@@ -22,16 +22,25 @@ Sito a tre pagine con caratteri web, intestazione fissa (sticky) e menu responsi
 
 ## Consegna 8 — Programma dai dati e meteo da API
 
-Programma generato da due file JSON collegati, con riquadro meteo in Info e luoghi.
+Programma generato da due elenchi collegati, con riquadro meteo in Info e luoghi.
 
-- `dati/eventi.json` — Sei eventi del festival
-- `dati/sedi.json` — Tre sedi, collegate agli eventi tramite `sede_id`
-- `dati/SCHEMA.md` — Scheda dati delle entità Evento e Sede, con schema Mermaid
-- `programma.js` — Costruisce le schede del Programma leggendo i due JSON
+- `dati/eventi.json` — Sei eventi del festival (copia di riferimento; la pagina non lo legge più)
+- `dati/sedi.json` — Tre sedi, collegate agli eventi tramite `sede_id` (copia di riferimento)
+- `dati/SCHEMA.md` — Scheda dati delle entità Evento, Sede e Notizia, con schema Mermaid
 - `meteo.js` — Legge temperatura, vento e ora da Open-Meteo nella pagina Info
 - `progettazione/resoconto-ai.md` — Resoconto del lavoro con l'AI
+
+## Consegna 9 — Dati da foglio Google pubblicato in CSV
+
+Il Programma non legge più i JSON della repository: eventi e sedi arrivano da un foglio Google pubblicato sul web in formato CSV, analizzato con Papa Parse. La Home legge un terzo CSV con le ultime cinque notizie ANSA Piemonte, lette dal foglio tramite `IMPORTFEED` (il browser non può leggere il RSS diretto per CORS).
+
+- `dati/eventi.csv` e `dati/sedi.csv` — CSV usati per importare le schede nel foglio
+- `programma.js` — Costruisce le schede del Programma leggendo i due CSV pubblicati
+- `notizie.js` — Legge il CSV delle notizie nella Home e ne mostra al massimo cinque
+- I link CSV pubblicati sono in cima a `programma.js` e `notizie.js`
 
 ## Note
 
 - Il festival, gli eventi e le sedi sono immaginari: sono riferimenti per l'esercitazione didattica.
 - I dati meteo sono forniti da Open-Meteo, licenza CC BY 4.0.
+- Le notizie della Home provengono dal feed RSS di ANSA Piemonte; i contenuti appartengono ad ANSA.
