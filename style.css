@@ -233,6 +233,36 @@ h3 {
   color: #46564b;
 }
 
+/* Notizie dalla Home: elenco breve collegato alla fonte ANSA. */
+.news-list {
+  margin-top: 1.5rem;
+}
+
+.news-list ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.news-item {
+  margin-bottom: 1rem;
+}
+
+.news-item a {
+  color: var(--colore-primario);
+  font-weight: 500;
+}
+
+.news-data {
+  color: #46564b;
+  font-size: 0.875rem;
+}
+
+.news-fonte {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #46564b;
+}
+
 /* Riquadro meteo nella pagina Info e luoghi. */
 .meteo-box {
   max-width: 26rem;

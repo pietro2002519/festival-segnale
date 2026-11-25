@@ -1,8 +1,14 @@
-// Programma generato dai dati: le schede sono costruite da eventi.json e sedi.json.
+// Programma generato dai dati di un foglio Google pubblicato in CSV:
+// le schede sono costruite da eventi.csv e sedi.csv.
 // Le due liste sono collegate tramite Evento.sede_id -> Sede.id.
+// Nel CSV ogni valore è testo: id e sede_id vanno confrontati come stringhe.
+
+// Indirizzi CSV pubblicati dal foglio «Segnale — dati».
+// Sostituire con i link reali di File > Condividi > Pubblica sul web (formato CSV).
+const INDIRIZZO_EVENTI = "INSERISCI_INDIRIZZO_CSV_EVENTI";
+const INDIRIZZO_SEDI = "INSERISCI_INDIRIZZO_CSV_SEDI";
 
 const griglia = document.getElementById("griglia-eventi");
-const stato = document.getElementById("stato-eventi");
 
 const GIORNI = {
   "2026-06-12": "Venerdì 12 giugno",
@@ -13,8 +19,13 @@ function formattaData(data) {
   return GIORNI[data] || data;
 }
 
+function normale(valore) {
+  return String(valore == null ? "" : valore).trim();
+}
+
 function cercaSede(sedi, sedeId) {
-  return sedi.find((sede) => sede.id === sedeId) || null;
+  const cercata = normale(sedeId);
+  return sedi.find((sede) => normale(sede.id) === cercata) || null;
 }
 
 function costruisciScheda(evento, sede) {
@@ -58,12 +69,23 @@ function mostraMessaggio(testo, classe) {
   griglia.append(messaggio);
 }
 
-async function caricaJson(percorso) {
-  const risposta = await fetch(percorso);
-  if (!risposta.ok) {
-    throw new Error("HTTP " + risposta.status);
-  }
-  return risposta.json();
+// Legge un CSV pubblicato dal foglio e restituisce l'elenco di oggetti.
+function caricaCsv(indirizzo) {
+  return new Promise((resolve, reject) => {
+    Papa.parse(indirizzo, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: (risultato) => {
+        if (risultato.errors && risultato.errors.length > 0 && risultato.data.length === 0) {
+          reject(new Error("CSV non leggibile"));
+          return;
+        }
+        resolve(risultato.data);
+      },
+      error: (errore) => reject(errore),
+    });
+  });
 }
 
 async function generaProgramma() {
@@ -72,8 +94,8 @@ async function generaProgramma() {
 
   try {
     [eventi, sedi] = await Promise.all([
-      caricaJson("dati/eventi.json"),
-      caricaJson("dati/sedi.json"),
+      caricaCsv(INDIRIZZO_EVENTI),
+      caricaCsv(INDIRIZZO_SEDI),
     ]);
   } catch (errore) {
     mostraMessaggio("Il programma non è disponibile: riprova più tardi.", "stato-errore");
